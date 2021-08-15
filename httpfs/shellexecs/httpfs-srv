@@ -1,0 +1,21 @@
+#!/bin/bash
+
+
+if [[ "$1" = 'd' ]] ; then
+    session_name="httpfs-srv"
+
+    if $(tmux has-session -t ${session_name}); then
+        echo "Tmux session \"${session_name}\" is already running. Attaching to tmux session."
+        tmux a -t ${session_name}
+    else
+        tmux new-session -s ${session_name} 'python3 -m httpfs.server.server'
+        echo "HttpFs Server: Launched httpfs in tmux (use command \"tmux a -t httpfs\" to attach)"
+    fi
+
+elif [[ "$1" = '' ]] ; then
+    python3 -m httpfs.server.server
+
+else
+    echo "bad input argument. acceptable arguments are 'tmux' or leave empty."
+fi
+

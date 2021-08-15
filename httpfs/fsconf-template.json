@@ -1,0 +1,32 @@
+
+[
+    {
+        "fsname" : "myfsname3",
+        "fsroot" : "{REPO_ROOT}/demo/demoDir3",
+        "readonly": "True"
+    },
+    {
+        "fsname" : "myfsname2",
+        "fsroot" : "{REPO_ROOT}/demo/demoDir2",
+        "readonly": "False"
+    },
+    {
+        "fsname" : "myfsname1",
+        "fsroot": "{REPO_ROOT}/demo/demoDir1",
+        "readonly": "False",
+        "comment" : "This and the above are for demo. you can fully tweak this to your own needs, or add more, even delete except the two below. comments are not essential."
+    },
+    {
+        "fsname" : "default",
+        "fsroot": "{REPO_ROOT}/demo/defaultDir",
+        "readonly": "False",
+        "comment" : "This is where images will be uploaded by default unless adding more custom fsnames. The alias key 'default' is resevered. You may only change the value for key 'fsroot'. 'readonly' value needs to stay 'False'."
+    },
+    {
+        "fsname" : "tmp",
+        "fsroot": "/tmp",
+        "readonly": "False",
+        "comment" : "Please keep this entry for Typora as it uses /tmp for uploader sanity testing. The alias key 'tmp' is reserved."
+    }
+]
+

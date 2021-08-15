@@ -1,0 +1,3 @@
+#!/bin/bash
+
+python -m httpfs.client_typora.noref_remover

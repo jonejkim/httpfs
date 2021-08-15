@@ -1,0 +1,3 @@
+#!/bin/bash
+
+python -m httpfs.tests.run_unittest
