@@ -1,27 +1,27 @@
 #!/bin/bash
 
-## if running line by line manually:
-# thisdir=`pwd`
+# if running line by line manually:
+thisdir=`pwd`
 
-# ## if running as a script:
-# thisdir=$(realpath $(dirname "$0"))
+## if running as a script:
+thisdir=$(realpath $(dirname "$0"))
 
-# pip install -e ${thisdir}
+pip install -e ${thisdir}
 
-# # make it executables
-# chmod u+x ${thisdir}/httpfs/shellexecs/httpfs-srv
-# chmod u+x ${thisdir}/httpfs/shellexecs/httpfsq
-# chmod u+x ${thisdir}/httpfs/shellexecs/httpfs-noref
-# chmod u+x ${thisdir}/httpfs/shellexecs/httpfs-unittest
+# make it executables
+chmod u+x ${thisdir}/httpfs/shellexecs/httpfs-srv
+chmod u+x ${thisdir}/httpfs/shellexecs/httpfsq
+chmod u+x ${thisdir}/httpfs/shellexecs/httpfs-noref
+chmod u+x ${thisdir}/httpfs/shellexecs/httpfs-unittest
 
-# # add to path, in .bashrc
-# cat << EOF >> ~/.bashrc
-# export PATH=${thisdir}/httpfs/shellexecs/:\$PATH
-# EOF
-# source ~/.bashrc
+# add to path, in .bashrc
+cat << EOF >> ~/.bashrc
+export PATH=${thisdir}/httpfs/shellexecs/:\$PATH
+EOF
+source ~/.bashrc
 
-# # setup demo configurations
-# python3 -m httpfs.setup_demo
+# setup demo configurations
+python3 -m httpfs.setup_demo
 
 # configure start server upon boot
 echo ""
