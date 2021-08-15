@@ -20,8 +20,9 @@ You should see terminal output running Flask server like the following:
 ```
 
 (Optionally), if you want to detach the process from terminal foreground to let server run in the background, I have already coded that capability using terminal multiplexer `tmux` (needs to be installed if your system doesn't have it).
+
 ```bash
-$ httpfs-srv d # d for detach
+$ httpfs-srv tmux
 ```
 Once launched you can typically press `ctrl+b` then `ctrl+d` to detach.
 

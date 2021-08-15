@@ -49,7 +49,7 @@ It was written for my personal use initially, but I saw why not in sharing it fo
 1. Download or `git clone` this repository to your local file system.
 2. `bash install.sh` to install. This will `httpfs` as a editable/development pip package along with package requirements (detail in `setup.py`) and add executable scripts to your `~/.bashrc`
 3. `source ~/.bashrc`
-4. Launch server with command `httpfs-srv` or `httpfs-srv d` to detach with tmux.
+4. Launch server with command `httpfs-srv` or `httpfs-srv tmux` run in tmux.
 
 ### Image Uploader Setting in Typora:
 
