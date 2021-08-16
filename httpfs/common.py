@@ -9,9 +9,9 @@ import markdown
 
 from .constants import *
 
-
 # Central class for accessing httpfs configurations
-class HttpFs(object):
+# - each FsConf contains all properties and methods needed for each fs
+class FsConf(object):
 
     def __init__(self, fsconf:dict):
         self.fsname = fsconf['fsname']
@@ -189,11 +189,11 @@ def build_confs_from_json(fsconf_fpath:PosixPath=FSCONF_FPATH):
         norefDir.mkdir(exist_ok=True)
         conf['norefDir'] = norefDir
 
-    # construct dictionary of {key : value} => {fsname : httpfs object}
+    # construct dictionary of {key : value} => {fsname : fsconf object}
     fsconfs = dict()
     for conf in confs:
-        httpfs = HttpFs(conf)
-        fsconfs[httpfs.fsname] = httpfs
+        fsconf = FsConf(conf)
+        fsconfs[fsconf.fsname] = fsconf
 
     return fsconfs
 

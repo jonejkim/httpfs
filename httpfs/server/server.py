@@ -17,17 +17,17 @@ def fs(fsname):
     # for subdirectories e.g. `/fsname/.imgs/notes0/`, create them manually. HTTP GET on them will still be possible.
     if request.method == 'POST':
         if fsname in FSCONFS.keys():
-            httpfs = FSCONFS[fsname]
+            fsconf = FSCONFS[fsname]
 
-            if httpfs.readonly:
+            if fsconf.readonly:
                 return False
 
             f = request.files['file'] # fetch inbound file
 
             # find & avoid duplicate filename
             desired_fname:str = url2pathname(f.filename)
-            unique_fname:str = httpfs.secure_unique_fname(desired_fname, httpfs.uploadDir)
-            savepath = httpfs.uploadDir / unique_fname
+            unique_fname:str = fsconf.secure_unique_fname(desired_fname, fsconf.uploadDir)
+            savepath = fsconf.uploadDir / unique_fname
             f.save(savepath)
 
             # return accessible URL

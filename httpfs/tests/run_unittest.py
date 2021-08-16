@@ -1,6 +1,6 @@
 #!/usr/bin/python
 import subprocess
-from httpfs.tests.test_helpers import testfiles_dir, runTest
+from httpfs.tests.test_helpers import testfiles_dir, runUploadTest
 from httpfs.common import build_confs_from_json
 import unittest
 
@@ -18,7 +18,7 @@ class HttpFsUnitTests(unittest.TestCase):
         md = ''
         ts = [str(testfiles_dir/'white.png')]
 
-        code = runTest(testName, md, ts)
+        code = runUploadTest(testName, md, ts)
         self.assertTrue(code == 0)
 
     def test_02(self):
@@ -26,7 +26,7 @@ class HttpFsUnitTests(unittest.TestCase):
         md = ''
         ts = [str(testfiles_dir/'white.png'), str(testfiles_dir/'white.png')]
 
-        code = runTest(testName, md, ts)
+        code = runUploadTest(testName, md, ts)
         self.assertTrue(code == 0)
 
 
@@ -35,7 +35,7 @@ class HttpFsUnitTests(unittest.TestCase):
         md = ''
         ts = [str(testfiles_dir/'white.png'), str(testfiles_dir/'white.png')]
 
-        code = runTest(testName, md, ts)
+        code = runUploadTest(testName, md, ts)
         self.assertTrue(code == 0)
 
     def test_04(self):
@@ -43,7 +43,7 @@ class HttpFsUnitTests(unittest.TestCase):
         md = ''
         ts = [f'{MOCKSRV}/typora-icon.png']
 
-        code = runTest(testName, md, ts)
+        code = runUploadTest(testName, md, ts)
         self.assertTrue(code == 0)
 
     def test_05(self):
@@ -51,7 +51,7 @@ class HttpFsUnitTests(unittest.TestCase):
         md = ''
         ts = [f'{MOCKSRV}/typora-icon.png', f'{MOCKSRV}/typora-icon2.png']
 
-        code = runTest(testName, md, ts)
+        code = runUploadTest(testName, md, ts)
         self.assertTrue(code == 0)
 
     def test_06(self):
@@ -59,7 +59,7 @@ class HttpFsUnitTests(unittest.TestCase):
         md = ''
         ts = [f'{MOCKSRV}/typora-icon.png', f'{MOCKSRV}/typora-icon.png']
 
-        code = runTest(testName, md, ts, printResult=False)
+        code = runUploadTest(testName, md, ts, printResult=False)
         # this tests returning for STDERR code (1), because uploader script will download the same URL under single temporary name, while the single temporary file will be removed immediately after the first upload, with no second one to be found for upload.
         print('[RESULT]:')
         if code == 0:
@@ -73,7 +73,7 @@ class HttpFsUnitTests(unittest.TestCase):
         md = ''
         ts = [f'{MOCKSRV}/typora-icon.png', f'{MOCKSRV}/typora-icon2.png', f'{MOCKSRV}/blue.gif']
 
-        code = runTest(testName, md, ts)
+        code = runUploadTest(testName, md, ts)
         self.assertTrue(code == 0)
 
     def test_08(self):
@@ -81,7 +81,7 @@ class HttpFsUnitTests(unittest.TestCase):
         md = str(FSCONFS['default'].fsroot / 'dummpy.md')
         ts = [f'{MOCKSRV}/typora-icon.png', f'{MOCKSRV}/typora-icon2.png', f'{MOCKSRV}/blue.gif']
 
-        code = runTest(testName, md, ts)
+        code = runUploadTest(testName, md, ts)
         self.assertTrue(code == 0)
 
     def test_09(self):
@@ -89,7 +89,7 @@ class HttpFsUnitTests(unittest.TestCase):
         md = str(FSCONFS['default'].fsroot / 'dummpy.md')
         ts = [f'{MOCKSRV}/white.png', f'{MOCKSRV}/red.jpg', f'{MOCKSRV}/blue.gif', f'{MOCKSRV}/pink.svg', f'{MOCKSRV}/yellow.eps']
 
-        code = runTest(testName, md, ts)
+        code = runUploadTest(testName, md, ts)
         self.assertTrue(code == 0)
 
     def test_10(self):
@@ -97,7 +97,7 @@ class HttpFsUnitTests(unittest.TestCase):
         md = str(FSCONFS['default'].fsroot / 'dummpy.md')
         ts = [f'{MOCKSRV}/red%20square.jpg', f'{MOCKSRV}/red%2Bsquare.jpg']
 
-        code = runTest(testName, md, ts)
+        code = runUploadTest(testName, md, ts)
         self.assertTrue(code == 0)
 
 
@@ -106,7 +106,7 @@ class HttpFsUnitTests(unittest.TestCase):
         md = str(FSCONFS['default'].fsroot / 'dummpy.md')
         ts = [f'{MOCKSRV}/red%2520square.jpg', f'{MOCKSRV}/red%252Bsquare.jpg']
 
-        code = runTest(testName, md, ts)
+        code = runUploadTest(testName, md, ts)
         self.assertTrue(code == 0)
 
     def test_12(self):
@@ -114,10 +114,15 @@ class HttpFsUnitTests(unittest.TestCase):
         md = str(FSCONFS['default'].fsroot / 'dummpy.md')
         ts = [f'{MOCKSRV}/sample.txt', f'{MOCKSRV}/sample.md', f'{MOCKSRV}/sample.odt', f'{MOCKSRV}/sample.pdf']
 
-        code = runTest(testName, md, ts)
+        code = runUploadTest(testName, md, ts)
         self.assertTrue(code == 0)
 
 if __name__ == '__main__':
+
+    """
+    Please run while httpfs-server is running
+    The unittests here are not exhaustive, but covers very basic sanity.
+    """
 
     try:
         ## simple http server to mock a remote server. for unit testing purpose.

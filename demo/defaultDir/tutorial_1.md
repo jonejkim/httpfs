@@ -73,6 +73,12 @@ $ httpfsq http://127.0.0.1:9999/default/.imgs/example_01.svg
 /home/jonejkim/Local/repos/httpfs/demo/defaultDir/.imgs/example_01.svg
 ```
 
+It can also print current list of ***fs*** :
+```bash
+httpfsq -fs
+
+```
+
 (Troubleshooting) if `httpfsq` doesnt work properly with the file path or URL you have provided, check that it is:
 - a full absolute path
 - posix path compliant (windows path not supported)

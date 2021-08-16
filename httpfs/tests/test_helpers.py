@@ -6,23 +6,16 @@ import subprocess
 
 testfiles_dir = PosixPath(__file__).parent / 'testfiles'
 
-def runTest(testName, md, ts, printResult=True):
+def runUploadTest(testName, md, ts, printResult=True):
     printTestName(testName)
-    cmd = makeCmd(md, ts)
+    cmd = makeUploadCmd(md, ts)
     code, _, _ = run_subprocess([*cmd])
     if printResult:
         printTestResult(code)
     return code
 
-def printFuncName(original_func):
-    print(original_func.__name__)
-    def wrapper_func(*args, **kwargs):
-        return original_func(*args, **kwargs)
-    return wrapper_func
-
-
-def makeCmd (md:str, ts:List[str]):
-    return f'python3', '-m', 'httpfs.client_typora.img_uploader', '-md', md, '-ts' , *ts
+def makeUploadCmd (md:str, ts:List[str]):
+    return 'python3', '-m', 'httpfs.client_typora.img_uploader', '-md', md, '-ts' , *ts
 
 def printTestName(testName):
     testNameLine =  f'== TEST: {testName} =='

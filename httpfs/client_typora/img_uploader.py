@@ -82,8 +82,8 @@ def main(mdpath, targetpaths):
         ##
 
         fetched_fsname = None
-        for fsname, httpfs in FSCONFS.items():
-            if (str(httpfs.fsroot)+'/') in mdpath:
+        for fsname, fsconf in FSCONFS.items():
+            if (str(fsconf.fsroot)+'/') in mdpath:
                 fetched_fsname = fsname
                 break
 
