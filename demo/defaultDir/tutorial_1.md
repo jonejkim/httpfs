@@ -73,10 +73,15 @@ $ httpfsq http://127.0.0.1:9999/default/.imgs/example_01.svg
 /home/jonejkim/Local/repos/httpfs/demo/defaultDir/.imgs/example_01.svg
 ```
 
-It can also print current list of ***fs*** :
-```bash
-httpfsq -fs
-
+It can also print current list of of ***fs*** configurations in `fsconf.json` using `-fs` option:
+```
+$ httpfsq -fs
+      fsname   readonly   fsroot
+   myfsname3 :     True : /home/jonejkim/Local/repos/httpfs/demo/demoDir3
+   myfsname2 :    False : /home/jonejkim/Local/repos/httpfs/demo/demoDir2
+   myfsname1 :    False : /home/jonejkim/Local/repos/httpfs/demo/demoDir1
+     default :    False : /home/jonejkim/Local/repos/httpfs/demo/defaultDir
+         tmp :    False : /tmp
 ```
 
 (Troubleshooting) if `httpfsq` doesnt work properly with the file path or URL you have provided, check that it is:
